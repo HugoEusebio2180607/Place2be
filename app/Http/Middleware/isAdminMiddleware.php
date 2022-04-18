@@ -9,13 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class isAdminMiddleware
 {
+   
+
     
     public function handle(Request $request, Closure $next)
     {
-       if( Auth::check() && Auth::user()->role == 1){
-           return $next($request);
-       }else{
-           return redirect()->route('login');
-       }
-    }
+      if( Auth::check() && Auth::user()->role == 1){
+          return $next($request);
+      }else{
+          return redirect()->route('login');
+      }
+   }
 }
