@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -37,4 +38,10 @@ Route::group(['prefix'=>'user' ,'middleware'=>['isUser' ,'auth']], function(){
     Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+   
 });
+
+
+Route::get('/add', [App\Http\Controllers\ImageController::class, 'addImage'])->name('photos.add_image');
+Route::post('/store-image', [App\Http\Controllers\ImageController::class, 'storeImage'])->name('photos.store');
+Route::get('/view', [App\Http\Controllers\ImageController::class, 'viewImage'])->name('photos.view_image');

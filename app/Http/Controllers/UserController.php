@@ -20,4 +20,6 @@ class UserController extends Controller
 
         return view('dashboards.users.settings');
     }
+
+  
 }
